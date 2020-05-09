@@ -7,7 +7,7 @@ import numpy as np
 
 
 st.title("Risk Analysis in Cancer !")
-
+st.markdown("## Please fill the infos and then press submit !")
 
 
 
@@ -49,17 +49,13 @@ breast_quad = st.selectbox(
     ('0 "dsdsd"', '1', '2',"3","4","200")
 )
 
-if st.button("Submit"):
-    st.text(breast + " " + breast_quad[0])
-
-
 # st.button("Button")
-def run():
-    x = int(breast_quad[0])
+# def run():
+#     x = int(breast_quad[0])
 
-    y = x + 5
+#     y = x + 5
 
-    st.text(y)
+#     st.text(y)
 
 
 def svm():
@@ -73,7 +69,7 @@ def svm():
     data = df[["age", "menopause", "tumor-size" , "inv-nodes" ,"node-caps", "deg-malig" , "breast", "breast-quad"]]
 
     res = df["Class"]
-    st.text(res)
+    # st.text(res)
 
     # Split dataset into training set and test set
     X_train, X_test, y_train, y_test = train_test_split(data, res, test_size=0.5,random_state=30) # 80% training and 20% test
@@ -99,8 +95,8 @@ def svm():
 # data = svm()
 
 
-if st.button("About"):
-    run()
+if st.button("Submit"):
+    # run()
     svm()
 
 # ## input field
@@ -108,5 +104,9 @@ if st.button("About"):
 # if st.button("Submit"):
 #     result = firstname.title()
 #     st.success(result)
+
+
+# if st.button("About"):
+#     st.text(breast + " " + breast_quad[0])
 
     
