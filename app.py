@@ -30,7 +30,7 @@ tumor_size = st.selectbox(
 
 inv_nodes = st.selectbox(
     'inv-nodes',
-    ('0', '1', '1',"3","4","5","6")
+    ('0', '1', '2',"3","4","5","6")
 )
 node_caps = st.selectbox(
     'node-caps',
@@ -58,7 +58,8 @@ breast_quad = st.selectbox(
 #     st.text(y)
 
 
-def svm():
+def svm(age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,breast_quad):
+    # st.text(age)
     # Import train_test_split function
     from sklearn.model_selection import train_test_split
 
@@ -67,10 +68,16 @@ def svm():
     df = pd.read_csv('./final.csv')
     # st.text(df)
     data = df[["age", "menopause", "tumor-size" , "inv-nodes" ,"node-caps", "deg-malig" , "breast", "breast-quad"]]
-
+    # st.text(data)
     res = df["Class"]
     # st.text(res)
 
+    data_for_prediction = [[age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,breast_quad]]
+    # st.text(data_for_prediction)
+    df_for_prediction = pd.DataFrame(data_for_prediction
+    , columns = ["age", "menopause", "tumor-size" , "inv-nodes" ,"node-caps", "deg-malig" , "breast", "breast-quad"]
+    )
+    st.text(df_for_prediction)
     # Split dataset into training set and test set
     X_train, X_test, y_train, y_test = train_test_split(data, res, test_size=0.5,random_state=30) # 80% training and 20% test
 
@@ -97,7 +104,7 @@ def svm():
 
 if st.button("Submit"):
     # run()
-    svm()
+    svm(age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,breast_quad[0])
 
 # ## input field
 # firstname = st.text_input("Enter your firstname")
