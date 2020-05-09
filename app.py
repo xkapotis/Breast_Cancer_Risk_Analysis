@@ -48,9 +48,11 @@ if st.button("Submit"):
 
 
 # st.button("Button")
+def run():
+    st.text("hello friend")
 
-# if st.button("About"):
-#     st.text("clicked!")
+if st.button("About"):
+    run()
 
 # ## input field
 # firstname = st.text_input("Enter your firstname")
