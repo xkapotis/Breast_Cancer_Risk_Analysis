@@ -1,17 +1,11 @@
 import streamlit as st
-
 import pandas as pd
 import numpy as np
-    # Import train_test_split function
-
-
 
 st.title("Risk Analysis in Cancer !")
 st.markdown("## Please fill the infos and then press submit !")
 
 
-
-###
 age = st.selectbox(
     'Age',
     ('0', '1', '2',"3","4","5")
@@ -49,23 +43,13 @@ breast_quad = st.selectbox(
     ('0 "dsdsd"', '1', '2',"3","4","200")
 )
 
-# st.button("Button")
-# def run():
-#     x = int(breast_quad[0])
-
-#     y = x + 5
-
-#     st.text(y)
 
 
 def svm(age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,breast_quad):
-    # st.text(age)
     # Import train_test_split function
     from sklearn.model_selection import train_test_split
 
-    # atributes = [ 'Class', 'age', 'menopause', 'tumor-size' ,'inv-nodes', 'node-caps', 'deg-malig' ,'breast', 'breast-quad', 'irradiat']
-    # missing = [np.nan , None , "" , "?"]
-    df = pd.read_csv('./final.csv')
+    df = pd.read_csv('./data/final.csv')
     # st.text(df)
     data = df[["age", "menopause", "tumor-size" , "inv-nodes" ,"node-caps", "deg-malig" , "breast", "breast-quad"]]
     # st.text(data)
@@ -74,12 +58,12 @@ def svm(age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,br
 
     data_for_prediction = [[age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,breast_quad]]
     # st.text(data_for_prediction)
-    df_for_prediction = pd.DataFrame(data_for_prediction
-    , columns = ["age", "menopause", "tumor-size" , "inv-nodes" ,"node-caps", "deg-malig" , "breast", "breast-quad"]
-    )
-    st.text(df_for_prediction)
-    # Split dataset into training set and test set
-    X_train, X_test, y_train, y_test = train_test_split(data, res, test_size=0.5,random_state=30) # 80% training and 20% test
+    df_for_prediction = pd.DataFrame(data_for_prediction, columns = ["age", "menopause", "tumor-size" , "inv-nodes" ,"node-caps", "deg-malig" , "breast", "breast-quad"])
+
+    X_train =  data
+    X_test = df_for_prediction
+    y_train = res
+
 
     #Import svm model
     from sklearn import svm
@@ -92,28 +76,11 @@ def svm(age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,br
 
     #Predict the response for test dataset
     y_pred = clf.predict(X_test)
-
-    #Import scikit-learn metrics module for accuracy calculation
-    from sklearn import metrics
-    result = metrics.accuracy_score(y_test, y_pred)
-    # Model Accuracy: how often is the classifier correct?
-    st.text(result)
-    
-# data = svm()
+    st.text(y_pred)
 
 
 if st.button("Submit"):
-    # run()
     svm(age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,breast_quad[0])
 
-# ## input field
-# firstname = st.text_input("Enter your firstname")
-# if st.button("Submit"):
-#     result = firstname.title()
-#     st.success(result)
-
-
-# if st.button("About"):
-#     st.text(breast + " " + breast_quad[0])
 
     
