@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.title("Risk Analysis in Breast Cancer")
+st.title("Application for Risk Analysis")
 st.markdown("## Please fill the following fields and press submit to calculate the possibility of breast cancer reappear")
 
 
