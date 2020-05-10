@@ -89,4 +89,3 @@ def svm(age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,br
 if st.button("Submit"):
     svm(age[0], menopause[0], tumor_size[0], inv_nodes[0], node_caps[0], deg_malig[0], breast[0], breast_quad[0])
 
-
