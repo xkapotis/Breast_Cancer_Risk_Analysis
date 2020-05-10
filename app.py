@@ -2,12 +2,12 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.title("Risk Analysis in Cancer !")
-st.markdown("## Please fill the infos and then press submit !")
+st.title("Risk Analysis in Breast Cancer")
+st.markdown("## Please fill the following fields and press submit to calculate the possibility of breast cancer reappear")
 
 
 age = st.selectbox(
-    'Age',
+    'age',
     ('0 "20-29" ', '1 "30-39" ', '2 "40-49" ','3 "50-59" ','4 "60-69" ','5 "70-79" ')
 )
 # st.text(age)
