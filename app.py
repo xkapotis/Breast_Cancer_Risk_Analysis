@@ -7,7 +7,7 @@ st.markdown("## Please fill the following fields and press submit to calculate t
 
 
 age = st.selectbox(
-    'age',
+    'How old are you?',
     ('0 "20-29" ', '1 "30-39" ', '2 "40-49" ','3 "50-59" ','4 "60-69" ','5 "70-79" ')
 )
 # st.text(age)
@@ -81,9 +81,9 @@ def svm(age, menopause, tumor_size , inv_nodes ,node_caps, deg_malig , breast,br
     if y_pred == 0:
         result = "Most possible is not to reappear with the possibility of error 25%"
     elif y_pred == 1:
-        result = "Most possible is reappear with the possibility of error 25%"
+        result = "Reappear with  possibility : 85% "
 
-    st.text(result)
+    st.header(result)
 
 
 if st.button("Submit"):
